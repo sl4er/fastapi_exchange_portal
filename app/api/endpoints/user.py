@@ -1,15 +1,15 @@
 from fastapi import APIRouter, Depends
 from app.api.schemas.user import User, UserOut
-from core.security import create_token
+from app.core.security import create_token
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.ext.asyncio import AsyncSession
-from core.hash import Hash
-from db.database import get_async_db_session
-from core.exceptions import (
+from app.core.hash import Hash
+from app.db.database import get_async_db_session
+from app.core.exceptions import (
     InvalidLoginException,
     InvalidPasswordException,
 )
-from repositories.exchange_repo import ExchangeRepository, SqlAlchemyExchangeRepository
+from app.repositories.exchange_repo import ExchangeRepository, SqlAlchemyExchangeRepository
 
 auth_router = APIRouter(
     prefix="/auth",

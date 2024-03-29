@@ -5,9 +5,9 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.schemas.user import User
-from core.exceptions import RegistrationException
-from core.hash import Hash
-from db.models import DbUser
+from app.core.exceptions import RegistrationException
+from app.core.hash import Hash
+from app.db.models import DbUser
 
 
 class ExchangeRepository(ABC):

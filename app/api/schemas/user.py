@@ -1,7 +1,7 @@
 import re
 from pydantic import BaseModel, field_validator
 
-from core.exceptions import EmailValidateException, PasswordValidateException, UsernameValidateException
+from app.core.exceptions import EmailValidateException, PasswordValidateException, UsernameValidateException
 
 
 class User(BaseModel):

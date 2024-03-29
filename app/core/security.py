@@ -2,10 +2,10 @@ import asyncio
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordBearer
 import jwt
-from core.config import settings
-from core.exceptions import InvalidLoginException, JWTTokenErrorException, JWTTokenExpiredException, JWTUserValidationException
-from db.database import get_async_db_session
-from db.models import DbUser
+from app.core.config import settings
+from app.core.exceptions import InvalidLoginException, JWTTokenErrorException, JWTTokenExpiredException, JWTUserValidationException
+from app.db.database import get_async_db_session
+from app.db.models import DbUser
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 

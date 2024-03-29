@@ -1,7 +1,7 @@
 from enum import Enum
 from pydantic import BaseModel, validator
 
-from core.exceptions import SimilarCurrencyException
+from app.core.exceptions import SimilarCurrencyException
 
 
 class CurrencyEnum(str, Enum):

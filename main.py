@@ -3,7 +3,7 @@ from fastapi import FastAPI
 
 
 from app.api.endpoints import currency, user
-from db.database import create_tables, engine
+from app.db.database import create_tables, engine
 
 
 # @asynccontextmanager

@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
 
 from app.api.schemas.currency import Currency
-from core.exceptions import EmptyCurrencyListException, ExchangeCurrencyListException
-from core.security import get_current_user
-from utils.external_api import ApiExchangeConnector as exchange_connector
+from app.core.security import get_current_user
+from app.core.exceptions import EmptyCurrencyListException, ExchangeCurrencyListException
+from app.utils.external_api import ApiExchangeConnector as exchange_connector
 
 
 currency_router = APIRouter(
