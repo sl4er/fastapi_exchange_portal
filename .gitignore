@@ -1,0 +1,7 @@
+.env
+.venv
+.idea
+.vscode
+.pytest_cache
+exchange_base.db
+**/__pycache__/
