@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 
-from app.api.schemas.currency import Currency
+from app.api.schemas.currency import Currency, CurrencyOut
 from app.core.security import get_current_user
 from app.core.exceptions import EmptyCurrencyListException, ExchangeCurrencyListException
 from app.utils.external_api import ApiExchangeConnector as exchange_connector
@@ -11,17 +11,13 @@ currency_router = APIRouter(
     tags=["currency"]
 )
 
-@currency_router.post("/exchange", status_code=200)
+@currency_router.post("/exchange", status_code=200, response_model=CurrencyOut)
 async def get_currency_exchange(currency: Currency, token:str = Depends(get_current_user)):
     course = await exchange_connector.get_exchange_pair(currency.first_valute, currency.second_valute)
     
     if course:
         result = currency.volume * course
-        return {"base_valute": f"{currency.first_valute}",
-                "exchange_valute": f"{currency.second_valute}",
-                "result": f"{result:.2f}",
-                "info": f"{currency.volume} {currency.first_valute} is {result:.2f} {currency.second_valute}"
-        }
+        return CurrencyOut(**currency.model_dump(), result=result)
     
     raise ExchangeCurrencyListException
 
