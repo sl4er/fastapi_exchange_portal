@@ -1,4 +1,4 @@
-from db.database import Base
+from app.db.database import Base
 """First migration
 
 Revision ID: 27d3a7ec1bce
